@@ -81,7 +81,8 @@
     transform-origin: 0 0;
   }
 
-  /* Zonas aproximadas de TikTok Live (1080 × 1920): arriba 220, derecha 220, abajo 400 px. */
+  /* Zonas aproximadas de TikTok LIVE (1080 × 1920): arriba 220 (perfil y espectadores),
+     derecha 140 (botones), abajo 480 (chat, regalos y caja de comentarios). No hay medidas oficiales. */
   .zona {
     position: absolute;
     inset: 0;
@@ -92,14 +93,14 @@
     background: rgba(255, 60, 90, 0.35);
   }
   .zona-top { left: 0; right: 0; top: 0; height: 11.458%; }
-  .zona-right { right: 0; top: 11.458%; width: 20.370%; height: 67.708%; }
-  .zona-bottom { left: 0; right: 0; bottom: 0; height: 20.833%; }
+  .zona-right { right: 0; top: 11.458%; width: 12.963%; height: 63.542%; }
+  .zona-bottom { left: 0; right: 0; bottom: 0; height: 25%; }
   .zona-safe {
     position: absolute;
     left: 0;
     top: 11.458%;
-    width: 79.630%;
-    height: 67.708%;
+    width: 87.037%;
+    height: 63.542%;
     box-sizing: border-box;
     border: 2px dashed #3dff9a;
   }
@@ -126,7 +127,7 @@
   </div>
 
   <div class="frame" id="frame">
-    <iframe id="escena" src="index.html" title="Escena vinilo" scrolling="no"></iframe>
+    <iframe id="escena" src="about:blank" title="Escena vinilo" scrolling="no"></iframe>
     <div class="zona" id="zona" hidden>
       <div class="zona-top"></div>
       <div class="zona-right"></div>
@@ -143,6 +144,10 @@
   <p class="note">Shown scaled to fit. In OBS, use a Browser Source at 1080 × 1920 on the vertical canvas.</p>
 
   <script>
+    // Escena a mostrar: ?escena=musica.html (por defecto la del vinilo).
+    const nombre = new URLSearchParams(location.search).get('escena') || 'index.html';
+    document.getElementById('escena').src = /^[\w-]+\.html$/.test(nombre) ? nombre : 'index.html';
+
     // Escala el lienzo de 1080×1920 al ancho del marco.
     const frame = document.getElementById('frame');
     const escena = document.getElementById('escena');

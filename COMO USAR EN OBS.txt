@@ -51,8 +51,10 @@ Notas:
 RADIO CÁPSULA — Escena vinilo para TikTok LIVE (vertical 1080x1920)
 ====================================================================
   - tiktok/index.html          → la escena (vinilo, onda, Modo música)
-  - tiktok/vista-previa.html   → vista reducida con las zonas seguras de TikTok
-  - tiktok/musica.html         → escena "Modo música" (marco neón, logo, ecualizadores y
+  - tiktok/vista-previa.html   → vista reducida con las zonas seguras de TikTok LIVE
+                                 (arriba 220, derecha 140, abajo 480 px; aproximadas).
+                                 Otra escena: vista-previa.html?escena=musica.html
+  - tiktok/musica.html         → escena "Modo música" (marco neón, ecualizadores y
                                  "Pedila y que suene."). Mismos colores.
     YA INCLUYE al perrito DJ (avatar.html): con poner solo musica.html alcanza.
     Cada cuánto aparece y sonido: musica.html?cada=3&sonido=0

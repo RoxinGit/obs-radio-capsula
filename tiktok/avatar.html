@@ -65,7 +65,7 @@
   // Momentos (segundos)
   const T_GOLPE = 3.35, T_SALIDA = 6.4, T_FIN = 8.4;
   // El "vidrio" de la pantalla está a 3 unidades de la cámara.
-  const CAM_Z = 10, VIDRIO_Z = 7.0, IMPACTO = new THREE.Vector3(0, 0.16, VIDRIO_Z);
+  const CAM_Z = 10, VIDRIO_Z = 7.0, IMPACTO = new THREE.Vector3(0, 0.233, VIDRIO_Z); // y = 800 px en pantalla
   const PERRO_Y = 1.3;
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -234,13 +234,13 @@
     tex.anisotropy = 8;
     const cara = new THREE.MeshStandardMaterial({ map: tex, metalness: 0.55, roughness: 0.22, envMapIntensity: 1.6 });
     const borde = new THREE.MeshStandardMaterial({ color: 0xff7a1a, emissive: 0xff5a00, emissiveIntensity: 0.8, metalness: 0.4, roughness: 0.3 });
-    const disco = new THREE.Mesh(new THREE.CylinderGeometry(0.56, 0.56, 0.025, 128), [borde, cara, cara]);
+    const disco = new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.46, 0.025, 128), [borde, cara, cara]);
     disco.rotation.x = Math.PI / 2; // la cara mira a la cámara
     const grupo = new THREE.Group();
     const giro = new THREE.Group();
     giro.add(disco); grupo.add(giro);
     // Halo naranja detrás del disco
-    const halo = new THREE.Mesh(new THREE.RingGeometry(0.55, 0.7, 96), new THREE.MeshBasicMaterial({
+    const halo = new THREE.Mesh(new THREE.RingGeometry(0.45, 0.58, 96), new THREE.MeshBasicMaterial({
       color: 0xff6a10, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending, depthWrite: false,
     }));
     halo.position.z = -0.02;
@@ -356,9 +356,9 @@
   // ---------- Capa 2D: línea de escaneo y texto con efecto decodificación ----------
   const capa = document.getElementById('capa2d').getContext('2d');
   const LINEAS = [
-    { txt: 'PONEMOS', y: 1400, tam: 88, esp: 22, font: 'Michroma' },
-    { txt: 'TU MÚSICA', y: 1518, tam: 88, esp: 22, font: 'Michroma' },
-    { txt: 'RADIO CÁPSULA  —  PEDILA EN EL CHAT', y: 1640, tam: 26, esp: 9, font: 'Inter' },
+    { txt: 'PONEMOS', y: 1240, tam: 76, esp: 16, font: 'Michroma' },
+    { txt: 'TU MÚSICA', y: 1330, tam: 76, esp: 16, font: 'Michroma' },
+    { txt: 'RADIO CÁPSULA  —  PEDILA EN EL CHAT', y: 1412, tam: 26, esp: 6, font: 'Inter' },
   ];
   const GLIFOS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/\\<>_';
   // Texto con letras separadas, centrado en x.
@@ -399,7 +399,7 @@
     }
 
     // Estado de la señal abajo
-    const Y = H - 240;
+    const Y = 1300; // por encima del chat de TikTok LIVE
     const estado = (txt, a, color) => {
       if (a <= 0) return;
       capa.save(); capa.globalAlpha = a;
@@ -426,7 +426,7 @@
     // Líneas de velocidad mientras el vinilo viene hacia la cámara
     const vel = env(t, 2.75, 3.1, T_GOLPE, T_GOLPE + 0.12);
     if (vel > 0) {
-      const cx = W / 2, cy = 880, r = azar(Math.floor(t * 30));
+      const cx = W / 2, cy = 800, r = azar(Math.floor(t * 30));
       capa.save();
       capa.globalCompositeOperation = 'lighter';
       for (let i = 0; i < 64; i++) {
@@ -463,7 +463,7 @@
     // El texto llega desde cerca de la cámara (se achica hasta su lugar)
     const llega = easeOut(clamp((t - t0) / 0.5));
     capa.save();
-    capa.translate(W / 2, 1500); capa.scale(lerp(1.6, 1, llega), lerp(1.6, 1, llega)); capa.translate(-W / 2, -1500);
+    capa.translate(W / 2, 1340); capa.scale(lerp(1.6, 1, llega), lerp(1.6, 1, llega)); capa.translate(-W / 2, -1340);
     LINEAS.forEach((ln, li) => {
       capa.font = `${ln.font === 'Inter' ? 600 : 400} ${ln.tam}px ${ln.font}, sans-serif`;
       capa.textBaseline = 'middle';
@@ -496,7 +496,7 @@
       const g = capa.createLinearGradient(W / 2 - 380, 0, W / 2 + 380, 0);
       g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(0.5, 'rgba(255,176,92,0.95)'); g.addColorStop(1, 'rgba(255,255,255,0)');
       capa.globalAlpha = 1;
-      capa.fillStyle = g; capa.fillRect(W / 2 - 380 * k, 1585, 760 * k, 2);
+      capa.fillStyle = g; capa.fillRect(W / 2 - 380 * k, 1378, 760 * k, 2);
     }
     capa.restore();
   }
@@ -682,7 +682,7 @@
   function arrancar() {
     if (arrancado) return;
     arrancado = true;
-    document.fonts.load('88px Michroma').finally(() => {
+    document.fonts.load('76px Michroma').finally(() => {
       if (pausa !== null) {
         // Para revisar un momento exacto (calienta la estela con unos cuadros previos)
         prepararVidrio(1);
