@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>La Cápsula Insólita — 2 cámaras</title>
+<link rel="stylesheet" href="overlay-common.css">
+</head>
+<body>
+<svg style="display:none">
+  <symbol id="doodle-cat" viewBox="0 0 100 100"><g fill="none" stroke="#2b2b2b" stroke-width="2.5">
+    <path d="M30 35 L20 15 L38 28 Z"/><path d="M70 35 L80 15 L62 28 Z"/>
+    <ellipse cx="50" cy="55" rx="30" ry="28"/><circle cx="38" cy="50" r="5" fill="#2b2b2b"/><circle cx="62" cy="50" r="5" fill="#2b2b2b"/>
+    <path d="M40 68 Q50 76 60 68"/><path d="M15 58 L35 60"/><path d="M15 65 L35 63"/><path d="M85 58 L65 60"/><path d="M85 65 L65 63"/>
+  </g></symbol>
+  <symbol id="doodle-house" viewBox="0 0 100 100"><g fill="none" stroke="#2b2b2b" stroke-width="2.5">
+    <path d="M20 55 L50 25 L80 55 Z"/><rect x="28" y="55" width="44" height="35"/><rect x="45" y="68" width="12" height="22"/>
+    <path d="M15 55 Q30 45 25 30"/>
+  </g></symbol>
+  <symbol id="doodle-figure" viewBox="0 0 100 100"><g fill="none" stroke="#2b2b2b" stroke-width="2.5">
+    <circle cx="50" cy="22" r="12"/><path d="M50 34 L50 65 M50 42 L30 55 M50 42 L70 55 M50 65 L35 90 M50 65 L65 90"/>
+    <circle cx="78" cy="78" r="8"/><path d="M78 86 L74 94 M78 86 L82 94 M78 70 L72 66 M78 70 L84 66"/>
+  </g></symbol>
+</svg>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <mask id="wallmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <rect width="1920" height="1080" fill="white"/>
+      <rect x="110" y="300" width="780" height="440" rx="18" fill="black"/>
+      <rect x="1030" y="300" width="780" height="440" rx="18" fill="black"/>
+    </mask>
+  </defs>
+</svg>
+<div class="stage">
+  <div class="bg-wall" style="mask:url(#wallmask); -webkit-mask:url(#wallmask);"></div>
+  <div class="spotlight"></div>
+  <div class="lamp flicker"></div>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+  <div class="glitch-layer r"></div>
+  <div class="glitch-layer c"></div>
+
+  <div class="title">LA CÁPSULA INSÓLITA<small>CASO ABIERTO · EN VIVO</small></div>
+
+  <!-- doodles pegados, repartidos arriba -->
+  <div class="sticky" style="top:130px; left:30px; width:120px; height:120px; transform: rotate(-7deg);">
+    <svg viewBox="0 0 100 100"><use href="#doodle-cat"/></svg>
+  </div>
+  <div class="sticky" style="top:130px; right:30px; width:120px; height:120px; transform: rotate(6deg);">
+    <svg viewBox="0 0 100 100"><use href="#doodle-house"/></svg>
+  </div>
+  <div class="sticky" style="top:130px; left:50%; transform: translateX(-50%) rotate(2deg); width:110px; height:110px;">
+    <svg viewBox="0 0 100 100"><use href="#doodle-figure"/></svg>
+  </div>
+
+  <!-- cinta divisoria central -->
+  <div class="crime-tape" style="top:520px; left:50%; width:1900px; transform: translateX(-50%) rotate(-0.8deg); z-index:2;"><span>NO CRUZAR · LA CÁPSULA INSÓLITA · NO CRUZAR</span></div>
+
+  <!-- dos huecos de camara -->
+  <div class="cam-frame" style="top:300px; left:110px; width:780px; height:440px; border-radius:18px;">
+    <div class="corner-tape tl"></div><div class="corner-tape tr"></div>
+    <div class="corner-tape bl"></div><div class="corner-tape br"></div>
+    <div class="cam-label">CÁMARA 1</div>
+  </div>
+  <div class="cam-frame" style="top:300px; right:110px; width:780px; height:440px; border-radius:18px;">
+    <div class="corner-tape tl"></div><div class="corner-tape tr"></div>
+    <div class="corner-tape bl"></div><div class="corner-tape br"></div>
+    <div class="cam-label">CÁMARA 2</div>
+  </div>
+</div>
+</body>
+</html>

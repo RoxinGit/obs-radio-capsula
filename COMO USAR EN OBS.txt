@@ -1,0 +1,49 @@
+LA CÁPSULA INSÓLITA — Overlays para OBS
+==========================================
+
+Archivos:
+  - overlay-1-camara.html            → 1 sola cámara (hueco grande centrado)
+  - overlay-2-camaras.html           → 2 cámaras lado a lado
+  - overlay-1-camara-imagen.html     → 1 cámara + espacio para imagen (estilo polaroid)
+  - overlay-common.css               → estilos compartidos (NO borrar, lo usan los 3 HTML)
+
+Cómo agregarlo en OBS:
+  1. En OBS, en la lista de Fuentes, click en "+" → "Fuente de navegador" (Browser Source).
+  2. Nombrarla, por ejemplo "Overlay Cápsula - 1 Cámara".
+  3. Marcar "Archivo local" (Local file) y seleccionar el .html que quieras usar
+     (ej: overlay-1-camara.html).
+  4. Ancho (Width): 1920   Alto (Height): 1080
+  5. Dejar marcado "Fondo transparente" / "Shutdown source when not visible" según prefieras.
+  6. Aceptar. El overlay debe aparecer con fondo transparente y la decoración encima.
+
+Orden de capas en OBS (de arriba hacia abajo en la lista de fuentes):
+  1. Overlay (el HTML) ← arriba del todo
+  2. Tu cámara (fuente de video) ← debajo, para que se vea DENTRO del hueco
+  3. Si usas la variante "+ imagen", agrega tu imagen como otra fuente debajo
+     del overlay, alineada dentro del marco polaroid.
+
+Ajustar la posición/tamaño del hueco de cámara:
+  - Cada hueco está definido en el HTML con la clase "cam-frame" (top/left/width/height).
+  - Si tu cámara no entra justo en el hueco, edita esos valores en el .html
+    (están en píxeles, sobre un lienzo de 1920x1080) o simplemente mueve/recorta
+    la fuente de video en OBS hasta que calce con el marco.
+
+Sobre los huecos (importante):
+  - Los huecos de cámara e imagen son recortes REALES (máscara) en el fondo,
+    no solo un rectángulo "vacío" visualmente: por eso sí van a dejar ver la
+    cámara o imagen que pongas debajo en OBS.
+  - En la variante "1 cámara + imagen", el marco blanco tipo polaroid es
+    decorativo (opaco), pero el espacio DENTRO del marco es el hueco real.
+  - Si pruebas el .html abriéndolo directo en un navegador (doble click) vas
+    a ver fondo blanco detrás de los huecos, porque el navegador no tiene
+    "cámara debajo" como SÍ la tiene OBS — eso es normal, en OBS se va a ver
+    bien porque ahí sí hay una fuente de video debajo.
+
+Notas:
+  - El glitch es muy sutil y ocurre cada ~7 segundos (líneas rojo/cian breves).
+    Si lo quieres más fuerte, más seguido, o quitarlo, dímelo y lo ajusto.
+  - El título dice "LA CÁPSULA INSÓLITA — CASO ABIERTO · EN VIVO". Si el texto
+    de abajo del título debe cambiar (fecha, invitado, etc.) también se puede
+    hacer editable desde OBS con un campo de texto aparte si quieres.
+  - Cuando elijas cuál variante te gustó más, dime y afinamos colores/tamaños
+    de las cámaras a tu gusto.
