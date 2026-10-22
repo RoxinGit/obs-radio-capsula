@@ -20,10 +20,21 @@
   }
   html, body {
     margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent; /* deja ver la cámara del estudio que va debajo en OBS */
+  }
+  /* El diseño mide 1080×1920 y se escala para llenar la fuente, tenga el tamaño que tenga
+     (TikTok LIVE Studio u OBS pueden crear la fuente más chica). */
+  #lienzo {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 1080px;
     height: 1920px;
     overflow: hidden;
-    background: transparent; /* deja ver la cámara del estudio que va debajo en OBS */
+    transform-origin: 0 0;
   }
 
   /* Fondo: velo oscuro y cálido semitransparente, para que la gente del estudio
@@ -236,6 +247,7 @@
 </style>
 </head>
 <body>
+<div id="lienzo">
   <div class="fondo"></div>
 
   <div class="vinilo">
@@ -348,5 +360,18 @@
       surcos.appendChild(c);
     }
   </script>
+</div>
+<script>
+  // Escala el lienzo 1080×1920 para que entre completo en la ventana y lo centra.
+  const lienzo = document.getElementById('lienzo');
+  function ajustar() {
+    const s = Math.min(innerWidth / 1080, innerHeight / 1920);
+    lienzo.style.transform = 'scale(' + s + ')';
+    lienzo.style.left = (innerWidth - 1080 * s) / 2 + 'px';
+    lienzo.style.top = (innerHeight - 1920 * s) / 2 + 'px';
+  }
+  addEventListener('resize', ajustar);
+  ajustar();
+</script>
 </body>
 </html>
