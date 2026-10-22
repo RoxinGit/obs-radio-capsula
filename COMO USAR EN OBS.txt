@@ -47,3 +47,11 @@ Notas:
     hacer editable desde OBS con un campo de texto aparte si quieres.
   - Cuando elijas cuál variante te gustó más, dime y afinamos colores/tamaños
     de las cámaras a tu gusto.
+
+RADIO CÁPSULA — Escena vinilo para TikTok LIVE (vertical 1080x1920)
+====================================================================
+  - tiktok/index.html          → la escena (vinilo, onda, Modo música)
+  - tiktok/vista-previa.html   → vista reducida con las zonas seguras de TikTok
+  Link publicado (GitHub Pages): https://roxingit.github.io/obs-radio-capsula/tiktok/
+  En TikTok LIVE Studio / OBS: fuente de navegador (Link/URL) de 1080 x 1920,
+  encima de la cámara. El fondo es semitransparente para que se vea el estudio.

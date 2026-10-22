@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Radio Cápsula Vinyl Scene</title>
+<style>
+  :root {
+    /* Layout: one centered 9:16 frame, the scene scaled to fit, caption below. */
+    --bg: #eef0f6;
+    --fg: #14162a;
+    --muted: #5d6280;
+    --line: rgba(20, 22, 42, 0.14);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #07080f;
+      --fg: #eceefe;
+      --muted: #9aa0c4;
+      --line: rgba(236, 238, 254, 0.14);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #07080f;
+    --fg: #eceefe;
+    --muted: #9aa0c4;
+    --line: rgba(236, 238, 254, 0.14);
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 14px/1.5 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .meta {
+    text-align: center;
+    max-width: 100%;
+  }
+  .meta h1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+  .meta p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .frame {
+    position: relative;
+    width: min(360px, 100%);
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--line), 0 12px 40px rgba(0, 0, 0, 0.35);
+  }
+  .frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1080px;
+    height: 1920px;
+    border: 0;
+    transform-origin: 0 0;
+  }
+
+  /* Zonas aproximadas de TikTok Live (1080 × 1920): arriba 220, derecha 220, abajo 400 px. */
+  .zona {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .zona div {
+    position: absolute;
+    background: rgba(255, 60, 90, 0.35);
+  }
+  .zona-top { left: 0; right: 0; top: 0; height: 11.458%; }
+  .zona-right { right: 0; top: 11.458%; width: 20.370%; height: 67.708%; }
+  .zona-bottom { left: 0; right: 0; bottom: 0; height: 20.833%; }
+  .zona-safe {
+    position: absolute;
+    left: 0;
+    top: 11.458%;
+    width: 79.630%;
+    height: 67.708%;
+    box-sizing: border-box;
+    border: 2px dashed #3dff9a;
+  }
+  .zonas-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .note {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    max-width: 360px;
+  }
+</style>
+</head>
+<body>
+  <div class="meta">
+    <h1>Radio Cápsula · Vinyl Scene</h1>
+    <p>1080 × 1920 · TikTok Live (9:16)</p>
+  </div>
+
+  <div class="frame" id="frame">
+    <iframe id="escena" src="index.html" title="Escena vinilo" scrolling="no"></iframe>
+    <div class="zona" id="zona" hidden>
+      <div class="zona-top"></div>
+      <div class="zona-right"></div>
+      <div class="zona-bottom"></div>
+      <div class="zona-safe"></div>
+    </div>
+  </div>
+
+  <label class="zonas-toggle">
+    <input type="checkbox" id="zonas-toggle-input">
+    Mostrar zonas seguras (aprox.)
+  </label>
+
+  <p class="note">Shown scaled to fit. In OBS, use a Browser Source at 1080 × 1920 on the vertical canvas.</p>
+
+  <script>
+    // Escala el lienzo de 1080×1920 al ancho del marco.
+    const frame = document.getElementById('frame');
+    const escena = document.getElementById('escena');
+    function fit() {
+      escena.style.transform = 'scale(' + (frame.clientWidth / 1080) + ')';
+    }
+    new ResizeObserver(fit).observe(frame);
+    fit();
+
+    // Muestra u oculta la capa de zonas seguras.
+    const zona = document.getElementById('zona');
+    document.getElementById('zonas-toggle-input').addEventListener('change', (e) => {
+      zona.hidden = !e.target.checked;
+    });
+  </script>
+</body>
+</html>
+
