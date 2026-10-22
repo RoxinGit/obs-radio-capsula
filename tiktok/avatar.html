@@ -10,8 +10,8 @@
   /* Lienzo vertical 1080×1920 (TikTok Live). Escena 3D cinematográfica (estilo Anyma):
      el perrito es una nube de partículas en 3D, lanza un vinilo 3D que sale de la pantalla,
      rompe el vidrio en pedazos que vuelan hacia el que mira y aparece "PONEMOS TU MÚSICA".
-     Se repite cada 5 minutos.
-     Opciones por URL: ?cada=5 (minutos)  ?sonido=0 (sin sonido)  ?pausa=3.5 (congela un segundo, para revisar)
+     Se repite cada 3 minutos.
+     Opciones por URL: ?cada=3 (minutos)  ?sonido=0 (sin sonido)  ?pausa=3.5 (congela un segundo, para revisar)
      Probar: clic o barra espaciadora la dispara al momento. */
   html, body {
     margin: 0;
@@ -59,7 +59,7 @@
 
   const W = 1080, H = 1920;
   const p = new URLSearchParams(location.search);
-  const cadaMin = Number(p.get('cada')) || 5;
+  const cadaMin = Number(p.get('cada')) || 3;
   const conSonido = p.get('sonido') !== '0';
 
   // Momentos (segundos)

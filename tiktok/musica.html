@@ -9,7 +9,7 @@
 <style>
   /* Lienzo vertical 1080×1920 (TikTok Live), mismos colores que la escena vinilo:
      noche azul-negra, naranja encendido y crema.
-     Incluye al perrito DJ (avatar.html), que aparece cada 5 minutos: ?cada=N  ?sonido=0 */
+     Incluye al perrito DJ (avatar.html), que aparece cada 3 minutos: ?cada=N  ?sonido=0 */
   :root {
     --noche: #07090f;
     --noche-2: #0f1420;
@@ -81,8 +81,8 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 22px;
-    padding: 16px 46px 18px 50px;
+    justify-content: center;
+    padding: 16px 112px 18px; /* mismo margen a los dos lados: el texto queda en el centro */
     border-radius: 999px;
     border: 3px solid var(--naranja);
     background: rgba(7, 9, 15, 0.72);
@@ -103,7 +103,17 @@
     background-clip: text;
     color: transparent;
   }
-  .logo svg { width: 64px; height: 74px; color: var(--naranja); filter: drop-shadow(0 0 8px var(--naranja)); }
+  /* El micrófono va aparte, a la derecha, sin correr el texto */
+  .logo svg {
+    position: absolute;
+    right: 34px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 74px;
+    color: var(--naranja);
+    filter: drop-shadow(0 0 8px var(--naranja));
+  }
   .vivo {
     position: absolute;
     top: 232px;
@@ -273,13 +283,13 @@
     </div>
   </div>
 
-  <!-- Perrito DJ 3D: aparece encima de todo cada 5 minutos (fondo transparente el resto del tiempo) -->
+  <!-- Perrito DJ 3D: aparece encima de todo cada 3 minutos (fondo transparente el resto del tiempo) -->
   <iframe class="perrito" id="perrito" title="Perrito DJ" scrolling="no" allow="autoplay"></iframe>
 </div>
 <script>
   const p = new URLSearchParams(location.search);
 
-  // El perrito DJ recibe las mismas opciones de la URL (?cada=5, ?sonido=0).
+  // El perrito DJ recibe las mismas opciones de la URL (?cada=3, ?sonido=0).
   const opciones = new URLSearchParams();
   for (const k of ['cada', 'sonido']) if (p.get(k)) opciones.set(k, p.get(k));
   document.getElementById('perrito').src = 'avatar.html' + (opciones.toString() ? '?' + opciones : '');

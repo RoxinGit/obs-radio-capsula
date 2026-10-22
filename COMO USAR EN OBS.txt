@@ -55,12 +55,12 @@ RADIO CÁPSULA — Escena vinilo para TikTok LIVE (vertical 1080x1920)
   - tiktok/musica.html         → escena "Modo música" (marco neón, logo, ecualizadores y
                                  "Pedila y que suene."). Mismos colores.
     YA INCLUYE al perrito DJ (avatar.html): con poner solo musica.html alcanza.
-    Cada cuánto aparece y sonido: musica.html?cada=5&sonido=0
+    Cada cuánto aparece y sonido: musica.html?cada=3&sonido=0
   - tiktok/avatar.html         → perrito DJ en 3D estilo Anyma (foto: tiktok/perrito.webp):
                                  holograma de partículas, lanza un vinilo 3D que rompe la
                                  pantalla y dice "PONEMOS TU MÚSICA". Fondo transparente,
                                  ponerla ARRIBA de todo. Necesita internet (carga Three.js).
-    Sale a los 3 s de cargar y después cada 5 minutos. Cambiar: avatar.html?cada=10 (minutos)
+    Sale a los 3 s de cargar y después cada 3 minutos. Cambiar: avatar.html?cada=10 (minutos)
     Trae sonido (golpe y zumbido); sin sonido: avatar.html?sonido=0
     En OBS marcar "Controlar audio mediante OBS" para escucharlo en el directo.
     El desenfoque (blur) de la cámara se hace en OBS: clic derecho en la cámara →
