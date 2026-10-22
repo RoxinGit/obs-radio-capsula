@@ -52,9 +52,9 @@ RADIO CÁPSULA — Escena vinilo para TikTok LIVE (vertical 1080x1920)
 ====================================================================
   - tiktok/index.html          → la escena (vinilo, onda, Modo música)
   - tiktok/vista-previa.html   → vista reducida con las zonas seguras de TikTok
-  - tiktok/musica.html         → escena "Modo música" (marco neón, logo, Ahora suena,
-                                 Próxima canción y Gracias por el pedido). Mismos colores.
-    Textos por URL, ej.: musica.html?artista=Soda&cancion=Persiana&prox_artista=Cerati&prox_cancion=Crimen&usuario=rox&duracion=3:28
+  - tiktok/musica.html         → escena "Modo música" (marco neón, logo, ecualizadores y
+                                 Gracias por el pedido). Mismos colores.
+    Usuario por URL, ej.: musica.html?usuario=rox
     El desenfoque (blur) de la cámara se hace en OBS: clic derecho en la cámara →
     Filtros → + Desenfoque (plugin "Composite Blur" / StreamFX), con poca intensidad.
   Link publicado (GitHub Pages): https://roxingit.github.io/obs-radio-capsula/tiktok/

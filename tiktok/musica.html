@@ -9,7 +9,7 @@
 <style>
   /* Lienzo vertical 1080×1920 (TikTok Live), mismos colores que la escena vinilo:
      noche azul-negra, naranja encendido y crema.
-     Textos editables por URL: ?artista=…&cancion=…&prox_artista=…&prox_cancion=…&usuario=…&duracion=3:28 */
+     Usuario editable por URL: ?usuario=… */
   :root {
     --noche: #07090f;
     --noche-2: #0f1420;
@@ -45,7 +45,7 @@
     inset: 0;
     background:
       radial-gradient(ellipse at 50% 40%, rgba(7, 9, 15, 0) 40%, rgba(7, 9, 15, 0.45) 100%),
-      linear-gradient(180deg, rgba(7, 9, 15, 0.35) 0%, rgba(7, 9, 15, 0.08) 18%, rgba(7, 9, 15, 0.08) 52%, rgba(7, 9, 15, 0.7) 68%, rgba(7, 9, 15, 0.85) 100%);
+      linear-gradient(180deg, rgba(7, 9, 15, 0.35) 0%, rgba(7, 9, 15, 0.08) 18%, rgba(7, 9, 15, 0.08) 70%, rgba(7, 9, 15, 0.6) 82%, rgba(7, 9, 15, 0.8) 100%);
   }
 
   /* Marco de neón alrededor de todo, con esquinas más brillantes. */
@@ -158,15 +158,12 @@
     position: absolute;
     left: 86px;
     right: 86px;
-    top: 1190px;
+    top: 1530px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .modo {
-    position: relative;
-    z-index: 1;
-    margin-bottom: -26px;
     display: inline-flex;
     align-items: center;
     gap: 14px;
@@ -189,110 +186,7 @@
     background: linear-gradient(160deg, rgba(20, 24, 36, 0.88), rgba(8, 10, 16, 0.92));
     box-shadow: 0 0 26px rgba(255, 122, 26, 0.3), inset 0 0 22px rgba(255, 122, 26, 0.08);
   }
-  .suena {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    padding: 44px 34px 30px;
-  }
-  /* Portada: mini vinilo que gira */
-  .portada {
-    flex: none;
-    width: 180px;
-    height: 180px;
-    border-radius: 20px;
-    border: 2px solid rgba(241, 227, 200, 0.35);
-    overflow: hidden;
-    position: relative;
-    background: radial-gradient(circle at 70% 20%, rgba(255, 176, 92, 0.75), transparent 55%),
-                linear-gradient(160deg, var(--naranja-osc), #2a1206 70%);
-  }
-  .portada .disco {
-    position: absolute;
-    width: 230px;
-    height: 230px;
-    left: -60px;
-    top: 30px;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle, var(--naranja) 0 6%, #0b0e16 6.5% 8%, var(--crema) 8.5% 20%, #0b0d14 21%),
-      #0b0d14;
-    box-shadow: 0 0 0 2px rgba(255, 122, 26, 0.5);
-    animation: girar 1.8s linear infinite;
-  }
-  .portada .disco::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: repeating-radial-gradient(circle, transparent 0 5px, rgba(255, 240, 220, 0.07) 5px 6px);
-  }
-  .portada .disco::before {
-    content: "";
-    position: absolute;
-    left: 46%;
-    top: 30%;
-    width: 8%;
-    height: 8%;
-    border-radius: 50%;
-    background: var(--ambar);
-  }
-  @keyframes girar { to { transform: rotate(360deg); } }
-  .info { flex: 1; min-width: 0; }
-  .info .cabeza { display: flex; align-items: center; justify-content: space-between; }
-  .ahora {
-    font-family: "Oswald", sans-serif;
-    font-size: 30px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    color: var(--naranja);
-  }
-  .info .corazon { width: 46px; height: 46px; color: var(--ambar); animation: titilar 1.6s ease-in-out infinite; }
-  .tema {
-    margin-top: 6px;
-    font-size: 42px;
-    font-weight: 600;
-    line-height: 1.15;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .barra { margin-top: 26px; height: 10px; border-radius: 5px; background: rgba(241, 227, 200, 0.15); overflow: hidden; }
-  .barra div {
-    height: 100%;
-    width: 0;
-    border-radius: 5px;
-    background: linear-gradient(90deg, var(--naranja-osc), var(--naranja), var(--ambar));
-    box-shadow: 0 0 10px var(--naranja);
-  }
-  .tiempos { display: flex; justify-content: space-between; margin-top: 12px; font-size: 26px; color: var(--crema-2); }
-
-  .proxima {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    width: calc(100% - 36px);
-    margin-top: 24px;
-    padding: 22px 30px;
-    border-color: rgba(255, 122, 26, 0.35);
-    border-radius: 24px;
-  }
-  .proxima .nota {
-    flex: none;
-    width: 80px;
-    height: 80px;
-    border-radius: 16px;
-    display: grid;
-    place-items: center;
-    background: rgba(241, 227, 200, 0.08);
-  }
-  .proxima .nota svg { width: 46px; height: 46px; color: var(--crema); }
-  .proxima .txt { flex: 1; min-width: 0; }
-  .proxima b { display: block; font-size: 32px; font-weight: 600; }
-  .proxima span { display: block; font-size: 30px; color: var(--crema-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .proxima .flecha { width: 40px; height: 40px; color: var(--crema-2); }
-
-  .gracias-fila { display: flex; align-items: center; gap: 22px; margin-top: 34px; }
+  .gracias-fila { display: flex; align-items: center; gap: 22px; margin-top: 28px; }
   .rayos { width: 48px; height: 60px; color: var(--naranja); filter: drop-shadow(0 0 6px var(--naranja)); }
   .rayos.der { transform: scaleX(-1); }
   .gracias {
@@ -351,34 +245,6 @@
       MODO MÚSICA
     </span>
 
-    <div class="tarjeta suena">
-      <div class="portada"><div class="disco"></div></div>
-      <div class="info">
-        <div class="cabeza">
-          <span class="ahora">AHORA SUENA</span>
-          <svg class="corazon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/>
-          </svg>
-        </div>
-        <div class="tema" id="tema">Artista - Nombre de la canción</div>
-        <div class="barra"><div id="progreso"></div></div>
-        <div class="tiempos"><span id="actual">0:00</span><span id="total">3:28</span></div>
-      </div>
-    </div>
-
-    <div class="tarjeta proxima">
-      <div class="nota">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-        </svg>
-      </div>
-      <div class="txt">
-        <b>Próxima canción</b>
-        <span id="proxima">Artista - Nombre de la canción</span>
-      </div>
-      <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
-    </div>
-
     <div class="gracias-fila">
       <svg class="rayos" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
         <path d="M14 5l6-3M8 15h14M14 25l6 3"/>
@@ -399,28 +265,9 @@
   </div>
 </div>
 <script>
-  // Textos desde la URL (si no vienen, quedan los de ejemplo).
+  // Usuario desde la URL (si no viene, queda @usuario).
   const p = new URLSearchParams(location.search);
-  const tema = (a, c) => (a && c) ? a + ' - ' + c : (a || c);
-  const actualTema = tema(p.get('artista'), p.get('cancion'));
-  const proximoTema = tema(p.get('prox_artista'), p.get('prox_cancion'));
-  if (actualTema) document.getElementById('tema').textContent = actualTema;
-  if (proximoTema) document.getElementById('proxima').textContent = proximoTema;
   if (p.get('usuario')) document.getElementById('usuario').textContent = '@' + p.get('usuario').replace(/^@/, '');
-
-  // Barra de progreso: avanza en tiempo real y vuelve a empezar al terminar.
-  const [m, s] = (p.get('duracion') || '3:28').split(':').map(Number);
-  const total = (m * 60 + (s || 0)) || 208;
-  const fmt = (t) => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
-  document.getElementById('total').textContent = fmt(total);
-  const inicio = Date.now();
-  function avanzar() {
-    const t = ((Date.now() - inicio) / 1000) % total;
-    document.getElementById('progreso').style.width = (t / total * 100) + '%';
-    document.getElementById('actual').textContent = fmt(t);
-  }
-  setInterval(avanzar, 250);
-  avanzar();
 
   // Ecualizadores: más largos en el centro, cada barra con su ritmo.
   for (const id of ['eq-izq', 'eq-der']) {
