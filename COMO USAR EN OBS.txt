@@ -55,6 +55,13 @@ RADIO CÁPSULA — Escena vinilo para TikTok LIVE (vertical 1080x1920)
   - tiktok/musica.html         → escena "Modo música" (marco neón, logo, ecualizadores y
                                  Gracias por el pedido). Mismos colores.
     Usuario por URL, ej.: musica.html?usuario=rox
+  - tiktok/avatar.html         → perrito DJ en 3D estilo Anyma (foto: tiktok/perrito.webp):
+                                 holograma de partículas, lanza un vinilo 3D que rompe la
+                                 pantalla y dice "PONEMOS TU MÚSICA". Fondo transparente,
+                                 ponerla ARRIBA de todo. Necesita internet (carga Three.js).
+    Sale a los 3 s de cargar y después cada 5 minutos. Cambiar: avatar.html?cada=10 (minutos)
+    Trae sonido (golpe y zumbido); sin sonido: avatar.html?sonido=0
+    En OBS marcar "Controlar audio mediante OBS" para escucharlo en el directo.
     El desenfoque (blur) de la cámara se hace en OBS: clic derecho en la cámara →
     Filtros → + Desenfoque (plugin "Composite Blur" / StreamFX), con poca intensidad.
   Link publicado (GitHub Pages): https://roxingit.github.io/obs-radio-capsula/tiktok/
