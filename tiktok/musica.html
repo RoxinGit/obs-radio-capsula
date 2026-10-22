@@ -9,7 +9,8 @@
 <style>
   /* Lienzo vertical 1080×1920 (TikTok Live), mismos colores que la escena vinilo:
      noche azul-negra, naranja encendido y crema.
-     Usuario editable por URL: ?usuario=… */
+     Usuario editable por URL: ?usuario=…
+     Incluye al perrito DJ (avatar.html), que aparece cada 5 minutos: ?cada=N  ?sonido=0 */
   :root {
     --noche: #07090f;
     --noche-2: #0f1420;
@@ -186,6 +187,15 @@
     background: linear-gradient(160deg, rgba(20, 24, 36, 0.88), rgba(8, 10, 16, 0.92));
     box-shadow: 0 0 26px rgba(255, 122, 26, 0.3), inset 0 0 22px rgba(255, 122, 26, 0.08);
   }
+  .perrito {
+    position: absolute;
+    inset: 0;
+    width: 1080px;
+    height: 1920px;
+    border: 0;
+    background: transparent;
+    z-index: 10;
+  }
   .gracias-fila { display: flex; align-items: center; gap: 22px; margin-top: 28px; }
   .rayos { width: 48px; height: 60px; color: var(--naranja); filter: drop-shadow(0 0 6px var(--naranja)); }
   .rayos.der { transform: scaleX(-1); }
@@ -263,11 +273,19 @@
       </svg>
     </div>
   </div>
+
+  <!-- Perrito DJ 3D: aparece encima de todo cada 5 minutos (fondo transparente el resto del tiempo) -->
+  <iframe class="perrito" id="perrito" title="Perrito DJ" scrolling="no" allow="autoplay"></iframe>
 </div>
 <script>
   // Usuario desde la URL (si no viene, queda @usuario).
   const p = new URLSearchParams(location.search);
   if (p.get('usuario')) document.getElementById('usuario').textContent = '@' + p.get('usuario').replace(/^@/, '');
+
+  // El perrito DJ recibe las mismas opciones de la URL (?cada=5, ?sonido=0).
+  const opciones = new URLSearchParams();
+  for (const k of ['cada', 'sonido']) if (p.get(k)) opciones.set(k, p.get(k));
+  document.getElementById('perrito').src = 'avatar.html' + (opciones.toString() ? '?' + opciones : '');
 
   // Ecualizadores: más largos en el centro, cada barra con su ritmo.
   for (const id of ['eq-izq', 'eq-der']) {
