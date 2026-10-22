@@ -81,8 +81,8 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 18px;
-    padding: 14px 40px 18px 54px;
+    gap: 22px;
+    padding: 16px 46px 18px 50px;
     border-radius: 999px;
     border: 3px solid var(--naranja);
     background: rgba(7, 9, 15, 0.72);
@@ -91,7 +91,8 @@
     text-align: center;
     white-space: nowrap;
   }
-  .logo .radio { font-size: 30px; letter-spacing: 12px; font-weight: 600; line-height: 1; margin-bottom: 4px; }
+  /* padding-left = letter-spacing, para que "RADIO" quede centrado sobre "CÁPSULA" */
+  .logo .radio { font-size: 30px; letter-spacing: 12px; padding-left: 12px; font-weight: 600; line-height: 1; margin-bottom: 6px; }
   .logo .capsula {
     font-size: 70px;
     font-weight: 700;
@@ -111,7 +112,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 8px 34px;
+    padding: 8px 30px 8px 32px; /* compensa el espacio que deja letter-spacing al final */
     border-radius: 999px;
     border: 2px solid var(--naranja);
     background: rgba(7, 9, 15, 0.8);
