@@ -9,7 +9,6 @@
 <style>
   /* Lienzo vertical 1080×1920 (TikTok Live), mismos colores que la escena vinilo:
      noche azul-negra, naranja encendido y crema.
-     Usuario editable por URL: ?usuario=…
      Incluye al perrito DJ (avatar.html), que aparece cada 5 minutos: ?cada=N  ?sonido=0 */
   :root {
     --noche: #07090f;
@@ -211,7 +210,6 @@
   }
   .gracias .ico { width: 44px; height: 44px; flex: none; }
   .gracias .enviar { color: var(--naranja); }
-  .gracias .usuario { color: var(--ambar); }
   .gracias .corazon { color: var(--ambar); animation: titilar 1.6s ease-in-out infinite; }
   /* El corazón late: crece un poco y brilla, luego se apaga. */
   @keyframes titilar {
@@ -263,7 +261,7 @@
         <svg class="ico enviar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>
         </svg>
-        <span>Gracias por el pedido <span class="usuario" id="usuario">@usuario</span></span>
+        <span>Pedila y que suene.</span>
         <svg class="ico corazon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/>
         </svg>
@@ -278,9 +276,7 @@
   <iframe class="perrito" id="perrito" title="Perrito DJ" scrolling="no" allow="autoplay"></iframe>
 </div>
 <script>
-  // Usuario desde la URL (si no viene, queda @usuario).
   const p = new URLSearchParams(location.search);
-  if (p.get('usuario')) document.getElementById('usuario').textContent = '@' + p.get('usuario').replace(/^@/, '');
 
   // El perrito DJ recibe las mismas opciones de la URL (?cada=5, ?sonido=0).
   const opciones = new URLSearchParams();

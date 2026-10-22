@@ -53,10 +53,9 @@ RADIO CÁPSULA — Escena vinilo para TikTok LIVE (vertical 1080x1920)
   - tiktok/index.html          → la escena (vinilo, onda, Modo música)
   - tiktok/vista-previa.html   → vista reducida con las zonas seguras de TikTok
   - tiktok/musica.html         → escena "Modo música" (marco neón, logo, ecualizadores y
-                                 Gracias por el pedido). Mismos colores.
-    Usuario por URL, ej.: musica.html?usuario=rox
+                                 "Pedila y que suene."). Mismos colores.
     YA INCLUYE al perrito DJ (avatar.html): con poner solo musica.html alcanza.
-    Cada cuánto aparece y sonido: musica.html?usuario=rox&cada=5&sonido=0
+    Cada cuánto aparece y sonido: musica.html?cada=5&sonido=0
   - tiktok/avatar.html         → perrito DJ en 3D estilo Anyma (foto: tiktok/perrito.webp):
                                  holograma de partículas, lanza un vinilo 3D que rompe la
                                  pantalla y dice "PONEMOS TU MÚSICA". Fondo transparente,
