@@ -362,10 +362,11 @@
   </script>
 </div>
 <script>
-  // Escala el lienzo 1080×1920 para que entre completo en la ventana y lo centra.
+  // Escala el lienzo 1080×1920 para cubrir la ventana sin deformarlo y lo centra.
+  // Si la ventana no es 9:16 (p. ej. la fuente de enlace de TikTok), recorta los costados en vez de dejar franjas.
   const lienzo = document.getElementById('lienzo');
   function ajustar() {
-    const s = Math.min(innerWidth / 1080, innerHeight / 1920);
+    const s = Math.max(innerWidth / 1080, innerHeight / 1920);
     lienzo.style.transform = 'scale(' + s + ')';
     lienzo.style.left = (innerWidth - 1080 * s) / 2 + 'px';
     lienzo.style.top = (innerHeight - 1920 * s) / 2 + 'px';
