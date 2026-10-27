@@ -84,8 +84,9 @@
     justify-content: space-between;
     filter: drop-shadow(0 0 6px rgba(255, 122, 26, 0.9));
   }
-  .eq.izq { left: 30px; align-items: flex-start; }
-  .eq.der { right: 30px; align-items: flex-end; }
+  /* Quedan a 150 px del borde: el de la derecha no cae bajo los botones de TikTok (zona derecha 140 px). */
+  .eq.izq { left: 150px; align-items: flex-start; }
+  .eq.der { right: 150px; align-items: flex-end; }
   .eq span {
     height: 5px;
     border-radius: 3px;
@@ -101,7 +102,7 @@
     position: absolute;
     left: 86px;
     right: 86px;
-    top: 1265px; /* termina antes de y = 1440, donde empieza el chat de TikTok LIVE */
+    top: 1225px; /* termina antes de y = 1440, donde empieza el chat de TikTok LIVE */
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -63,7 +63,7 @@
     width: 600px;
     height: 600px;
     left: -120px; /* medio cortado por el borde izquierdo */
-    top: 910px; /* abajo, rozando el borde inferior de la zona segura (y = 1520) */
+    top: 768px; /* centrado con la columna, dentro de la zona segura (y 220-1440) */
     z-index: 2; /* por encima de los cuadros */
     border-radius: 50%;
     background:
@@ -92,7 +92,7 @@
     width: 600px;
     height: 600px;
     left: -120px;
-    top: 910px;
+    top: 768px;
     z-index: 2;
     border-radius: 50%;
     background:
@@ -111,7 +111,7 @@
   .brazo {
     position: absolute;
     left: -61px;
-    top: 52px; /* sigue al vinilo */
+    top: -90px; /* sigue al vinilo (mismo desplazamiento que el disco) */
     z-index: 3;
     width: 1080px;
     overflow: visible;
@@ -127,10 +127,10 @@
   /* Columna derecha: onda + paneles, al lado del vinilo. */
   .columna {
     position: absolute;
-    left: 450px; /* el borde izquierdo sale por debajo del vinilo */
+    left: 420px; /* el borde izquierdo sale por debajo del vinilo */
     z-index: 1;
-    top: 1060px; /* un poco más abajo, pedido para no tapar los mensajes */
-    width: 600px;
+    top: 748px; /* sube para que termine antes de la zona de abajo (y 1440) */
+    width: 500px; /* termina en x 920, antes de la zona de botones (x 940) */
     display: flex;
     flex-direction: column;
     gap: 26px;
@@ -222,8 +222,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 24px 28px 24px 100px;
+    gap: 16px;
+    padding: 24px 20px 24px 72px;
     margin-left: -70px; /* aquí el disco es más angosto: se estira para entrar por debajo */
     font-size: 36px;
     font-weight: 600;
@@ -238,7 +238,7 @@
     30% { transform: scale(1); opacity: 0.8; }
     45% { transform: scale(1.12); opacity: 1; filter: drop-shadow(0 0 8px #ff7a1a); }
   }
-  .fila .texto { flex: 1; text-align: center; }
+  .fila .texto { flex: 1; text-align: center; white-space: nowrap; }
   @keyframes girar { to { transform: rotate(360deg); } }
   @keyframes pulso {
     0%, 100% { box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.5), 0 0 60px 6px rgba(255, 122, 26, 0.4); }
